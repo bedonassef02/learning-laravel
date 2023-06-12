@@ -17,10 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::resource('posts', \App\Http\Controllers\PostController::class)->except([
-//    'create', 'show'
-//]);
+//Route::get('user-profile', [\App\Http\Controllers\UserProfileController::class, '__invoke']);
 
-Route::resource('posts', \App\Http\Controllers\PostController::class)->only([
-    'index', 'destroy'
-]);
+Route::get('user-profile', \App\Http\Controllers\UserProfileController::class);
