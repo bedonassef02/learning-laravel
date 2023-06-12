@@ -17,6 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/users/{name}', function ($name) {
-    return view('views', compact('name'));
+Route::get('/users', function() {
+    return view('users');
 });
