@@ -17,6 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('user-profile', [\App\Http\Controllers\UserProfileController::class, '__invoke']);
-
-Route::get('user-profile', \App\Http\Controllers\UserProfileController::class);
+Route::resource('posts', \App\Http\Controllers\PostController::class)->middleware('auth');
