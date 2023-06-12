@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/users', function() {
-    return view('users');
+Route::controller(\App\Http\Controllers\PostController::class)->group(function () {
+    Route::get('posts', 'index');
+    Route::get('posts/{id}', 'show');
 });
+
