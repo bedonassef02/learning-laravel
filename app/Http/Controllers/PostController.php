@@ -50,9 +50,16 @@ class PostController extends Controller
     }
 
     public function deleteAll(){
-        DB::table('posts')->delete();
+        DB::table('posts')->truncate();
         return redirect()->back();
     }
+
+    public function truncate()
+    {
+        DB::table('posts')->truncate();
+        return 'Done!';
+    }
+
 
 
 }
