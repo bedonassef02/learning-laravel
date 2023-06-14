@@ -49,6 +49,11 @@ class PostController extends Controller
         return 'Done!';
     }
 
+    public function deleteAll(){
+        DB::table('posts')->delete();
+        return redirect()->back();
+    }
+
 
 }
 
