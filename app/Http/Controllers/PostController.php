@@ -27,4 +27,20 @@ class PostController extends Controller
     {
         return view('posts.create');
     }
+
+    public function edit($id)
+    {
+        $post = DB::table('posts')->where('id', $id)->first();
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        DB::table('posts')->where('id',$id)->update([
+            'title' => $request->title,
+            'body' => $request->body,
+        ]);
+        return 'Done!';
+    }
 }
+
