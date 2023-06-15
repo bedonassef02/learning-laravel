@@ -11,8 +11,9 @@ class PostController extends Controller
 
     public function index()
     {
-//        $posts = Post::all();
-        $posts = Post::get();
+        // call scope in model
+        $posts = Post::bedo()->first();
+        return $posts;
         return view('posts.index', compact('posts'));
     }
 

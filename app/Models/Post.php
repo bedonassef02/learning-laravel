@@ -10,5 +10,9 @@ class Post extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    public function scopeBedo($query){
+        return $query->where('body','wr');
+    }
     protected $fillable = ['title', 'body'];
 }
