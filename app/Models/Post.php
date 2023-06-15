@@ -9,8 +9,5 @@ class Post extends Model
 {
     use HasFactory;
 
-//    protected $fillable = ['title', 'body'];
-
-// u can use this for only coulmns don't insert
-    protected $guarded = [];
+    protected $fillable = ['title', 'body'];
 }

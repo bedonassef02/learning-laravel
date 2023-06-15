@@ -11,21 +11,17 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = DB::table('posts')->get();
-        return view('posts.index', compact('posts'));
+//        $posts = Post::all();
+        $posts = Post::get();
+        return view('posts.index',compact('posts'));
     }
 
     public function store(Request $request)
     {
-//        Post::create([
-//            'title' => $request->title,
-//            'body' => $request->body
-//        ]);
-
-        // more eaiser but don't use this again
-        Post::create(
-            $request->all()
-        );
+        Post::create([
+            'title' => $request->title,
+            'body' => $request->body
+        ]);
         return response('Done!');
     }
 
