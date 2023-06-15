@@ -55,19 +55,23 @@ class PostController extends Controller
     }
 
 
-    public function archive(){
+    public function archive()
+    {
         $posts = Post::onlyTrashed()->get();
-        return view('posts.deleted',compact('posts'));
+        return view('posts.deleted', compact('posts'));
     }
 
     public function restore($id)
     {
-        Post::withTrashed()->where('id',$id)->restore();
+        Post::withTrashed()->where('id', $id)->restore();
         return redirect()->back();
     }
 
-
-
+    public function forceDelete($id)
+    {
+        Post::withTrashed()->where('id', $id)->forceDelete();
+        return redirect()->back();
+    }
 
 
 }

@@ -30,4 +30,5 @@ Route::group([
     Route::delete('{id}/delete', 'PostController@destroy')->name('posts.destroy');
     Route::get('/archive', 'PostController@archive')->name('posts.archive');
     Route::post('/{id}/restore', 'PostController@restore')->name('posts.restore');
+    Route::delete('/{id}/forceDelete', 'PostController@forceDelete')->name('posts.forceDelete');
 });
