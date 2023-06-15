@@ -13,7 +13,7 @@ class PostController extends Controller
     {
 //        $posts = Post::all();
         $posts = Post::get();
-        return view('posts.index',compact('posts'));
+        return view('posts.index', compact('posts'));
     }
 
     public function store(Request $request)
@@ -32,16 +32,18 @@ class PostController extends Controller
 
     public function edit($id)
     {
-        $post = DB::table('posts')->where('id', $id)->first();
+//        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         return view('posts.edit', compact('post'));
     }
 
     public function update(Request $request, $id)
     {
-        DB::table('posts')->where('id', $id)->update([
-            'title' => $request->title,
-            'body' => $request->body,
-        ]);
+//        $post = Post::find($id);
+        $post = Post::where('id', $id)->first();
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save();
         return 'Done!';
     }
 
@@ -51,17 +53,6 @@ class PostController extends Controller
         return 'Done!';
     }
 
-    public function deleteAll()
-    {
-        DB::table('posts')->delete();
-        return redirect()->back();
-    }
-
-    public function truncate()
-    {
-        DB::table('posts')->truncate();
-        return 'Done!';
-    }
 
 
 }
