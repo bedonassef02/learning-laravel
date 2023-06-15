@@ -24,5 +24,5 @@ Route::controller(\App\Http\Controllers\PostController::class)->group(function (
     Route::get('posts', [\App\Http\Controllers\PostController::class, 'index'])->name('posts.index');
     Route::get('posts/{id}/edit', [\App\Http\Controllers\PostController::class, 'edit'])->name('posts.edit');
     Route::put('posts/{id}/update', [\App\Http\Controllers\PostController::class, 'update'])->name('posts.update');
-
+    Route::delete('posts/{id}/delete', [\App\Http\Controllers\PostController::class, 'destroy'])->name('posts.destroy');
 });
