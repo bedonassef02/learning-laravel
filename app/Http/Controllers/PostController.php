@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,11 +17,16 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        DB::table('posts')->insert([
-            'title' => $request->title,
-            'body' => $request->body,
-        ]);
-        return 'Done!';
+//        Post::create([
+//            'title' => $request->title,
+//            'body' => $request->body
+//        ]);
+
+        // more eaiser but don't use this again
+        Post::create(
+            $request->all()
+        );
+        return response('Done!');
     }
 
     public function create()
@@ -36,7 +42,7 @@ class PostController extends Controller
 
     public function update(Request $request, $id)
     {
-        DB::table('posts')->where('id',$id)->update([
+        DB::table('posts')->where('id', $id)->update([
             'title' => $request->title,
             'body' => $request->body,
         ]);
@@ -49,7 +55,8 @@ class PostController extends Controller
         return 'Done!';
     }
 
-    public function deleteAll(){
+    public function deleteAll()
+    {
         DB::table('posts')->delete();
         return redirect()->back();
     }
@@ -59,7 +66,6 @@ class PostController extends Controller
         DB::table('posts')->truncate();
         return 'Done!';
     }
-
 
 
 }
