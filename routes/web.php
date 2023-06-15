@@ -29,4 +29,5 @@ Route::group([
     Route::put('{id}/update', 'PostController@update')->name('posts.update');
     Route::delete('{id}/delete', 'PostController@destroy')->name('posts.destroy');
     Route::get('/archive', 'PostController@archive')->name('posts.archive');
+    Route::post('/{id}/restore', 'PostController@restore')->name('posts.restore');
 });
