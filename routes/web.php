@@ -17,12 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::controller(\App\Http\Controllers\PostController::class)->group(function () {
-    Route::get('posts/create', [\App\Http\Controllers\PostController::class, 'create']);
-//Route::post('posts/store', [\App\Http\Controllers\PostController::class, 'store']);
-    Route::post('posts/store', [\App\Http\Controllers\PostController::class, 'store'])->name('posts.store');
-    Route::get('posts', [\App\Http\Controllers\PostController::class, 'index'])->name('posts.index');
-    Route::get('posts/{id}/edit', [\App\Http\Controllers\PostController::class, 'edit'])->name('posts.edit');
-    Route::put('posts/{id}/update', [\App\Http\Controllers\PostController::class, 'update'])->name('posts.update');
-    Route::delete('posts/{id}/delete', [\App\Http\Controllers\PostController::class, 'destroy'])->name('posts.destroy');
+
+Route::group([
+    'prefix' => 'posts',
+    'namespace' => '\App\Http\Controllers',
+], function () {
+    Route::get('create', 'PostController@create');
+    Route::post('store', 'PostController@store')->name('posts.store');
+    Route::get('/', 'PostController@index')->name('posts.index');
+    Route::get('{id}/edit', 'PostController@edit')->name('posts.edit');
+    Route::put('{id}/update', 'PostController@update')->name('posts.update');
+    Route::delete('{id}/delete', 'PostController@destroy')->name('posts.destroy');
+    Route::get('/archive', 'PostController@archive')->name('posts.archive');
 });

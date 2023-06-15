@@ -55,6 +55,10 @@ class PostController extends Controller
     }
 
 
+    public function archive(){
+        $deletedPosts = Post::onlyTrashed()->get();
+        return $deletedPosts;
+    }
 
 }
 
