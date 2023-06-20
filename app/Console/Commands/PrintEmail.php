@@ -6,7 +6,8 @@ use Illuminate\Console\Command;
 
 class PrintEmail extends Command
 {
-    protected $signature = 'print-email';
+    // u can delete ?
+    protected $signature = 'print-email {email} {--M|mmm}';
 
     protected $description = 'Print my Email';
 
