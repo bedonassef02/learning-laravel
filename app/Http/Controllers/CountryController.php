@@ -13,7 +13,7 @@ class CountryController extends Controller
     {
         $value = '';
         // if user == null => exists will return true
-        if (session()->exists('user')) {
+        if (session()->has('user')) {
             $value = session()->get('user');
         } else {
             $value = 'Guest';
