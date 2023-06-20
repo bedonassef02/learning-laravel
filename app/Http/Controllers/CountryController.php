@@ -12,8 +12,7 @@ class CountryController extends Controller
 {
     public function index(Request $request)
     {
-//        dd($request->method());
-        dd($request->isMethod("GET"));
+        dd($request->ip());
     }
 
     public function create()
