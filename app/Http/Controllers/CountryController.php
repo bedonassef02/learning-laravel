@@ -13,7 +13,7 @@ class CountryController extends Controller
     public function index(Request $request)
     {
         // return true or false
-        dd($request->is('countries'));
+        dd($request->routeIs('countries.index'));
     }
 
     public function create()
