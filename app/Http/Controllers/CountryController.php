@@ -11,8 +11,11 @@ class CountryController extends Controller
 {
     public function index()
     {
-        $collection = collect(['bedo', 'test', null])->toUpper();
-        dd($collection->all());
+        $countries = Country::take(1000)->get()->filter(function ($element) {
+            return $element->id > 200;
+        });
+
+        return view('countries', compact('countries'));
     }
 
     public function create()
