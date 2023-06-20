@@ -12,8 +12,8 @@ class CountryController extends Controller
 {
     public function index(Request $request)
     {
-        // return true or false
-        dd($request->url());
+//        dd($request->method());
+        dd($request->isMethod("GET"));
     }
 
     public function create()
