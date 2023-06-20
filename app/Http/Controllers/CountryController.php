@@ -4,15 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Country;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 
 class CountryController extends Controller
 {
     public function index()
     {
-        $array = ['bedo', 'test', null];
-        $collection = collect(['bedo', 'test', null])->map(fn($name) => strtoupper($name))->reject(fn($name) => empty($name));
-        dd(gettype($array));
+        Collection::macro('toUpper', function () {
+            return $this->map(function ($value) {
+                return strtoupper($value);
+            });
+        });
+        $collection = collect(['bedo', 'test', null])->toUpper();
+        dd($collection->all());
     }
 
     public function create()
