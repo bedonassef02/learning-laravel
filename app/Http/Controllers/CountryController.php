@@ -12,7 +12,13 @@ class CountryController extends Controller
 {
     public function index(Request $request)
     {
-        dd($request->boolean('hasWifi'));
+//        dd($request->only(['name']));
+//        dd($request->has(['name', 'email']));
+//        dd($request->hasAny(['name', 'email']));
+
+//        $request->merge(['age'=>'20']);
+        $request->mergeIfMissing(['age'=>'20']);
+        dd($request->all());
     }
 
     public function create()
