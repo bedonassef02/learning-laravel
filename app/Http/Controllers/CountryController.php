@@ -12,7 +12,7 @@ class CountryController extends Controller
 {
     public function index(Request $request)
     {
-        dd($request->ip());
+        dd($request->header('connection'));
     }
 
     public function create()
