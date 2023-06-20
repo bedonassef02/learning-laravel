@@ -13,8 +13,9 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $countries = Cache::remember('users', 20, function () {
-            return Country::take(1000)->get();
+        // store for 40 sec
+        $countries = Cache::remember('users', 40, function () {
+            return Country::take(20000)->get();
         });
         return view('countries', get_defined_vars());
     }
@@ -24,7 +25,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        Country::factory()->count(1000)->create();
+        Country::factory()->count(10000)->create();
     }
 
     /**

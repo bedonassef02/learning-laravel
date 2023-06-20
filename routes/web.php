@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('countries', \App\Http\Controllers\CountryController::class);
+Route::resource('countries', \App\Http\Controllers\CountryController::class)->only(['index','create']);
