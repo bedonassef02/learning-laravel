@@ -11,7 +11,8 @@ class CountryController extends Controller
 {
     public function index()
     {
-        $countries = Country::take(1000)->get()->filter(function ($element) {
+        // effecient time for lazy collections
+        $countries = Country::take(1000)->cursor()->filter(function ($element) {
             return $element->id > 200;
         });
 
