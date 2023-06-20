@@ -23,7 +23,7 @@ class CountryController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
+        dd($request->path());
     }
 
     public function show(Country $country)
