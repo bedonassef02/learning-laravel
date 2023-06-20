@@ -12,7 +12,8 @@ class CountryController extends Controller
 {
     public function index(Request $request)
     {
-        dd($request->collect());
+        dd($request->input('name', 'default'));
+        dd($request->input()->name);
     }
 
     public function create()
