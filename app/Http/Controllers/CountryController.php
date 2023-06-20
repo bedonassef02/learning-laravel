@@ -13,7 +13,7 @@ class CountryController extends Controller
     {
         // effecient time for lazy collections
         $countries = Country::take(1000)->cursor()->filter(function ($element) {
-            return $element->id > 200;
+            return $element->id > 100;
         });
 
         return view('countries', compact('countries'));
