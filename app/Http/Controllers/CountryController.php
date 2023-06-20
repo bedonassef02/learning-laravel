@@ -11,9 +11,9 @@ class CountryController extends Controller
 {
     public function index()
     {
-        session()->put('name', ['Bedo']);
-        session()->push('name','M');
-        $value = session()->get('name');
+        // will delete name after returning it
+        // and if name not exsists will return default
+        $value = session()->pull('name', 'default');
         return $value;
     }
 
