@@ -12,12 +12,11 @@ class CountryController extends Controller
 {
     public function index(Request $request)
     {
-        dd($request->hasHeader('connection'));
+        dd($request->collect());
     }
 
     public function create()
     {
-        Country::factory()->count(100)->create();
     }
 
     public function store(Request $request)
