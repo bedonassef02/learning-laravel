@@ -11,7 +11,8 @@ class CountryController extends Controller
 {
     public function index()
     {
-        $value = session()->get('key','default');
+        session(['key' => 'Bedo']);
+        $value = session()->get('key', 'default');
         return $value;
     }
 
