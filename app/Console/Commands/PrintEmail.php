@@ -13,7 +13,7 @@ class PrintEmail extends Command
 
     public function handle()
     {
-        $name = $this->ask('what is ur name? ');
+        $name = $this->secret('what is ur name? ');
         $this->info('print name ' . $name);
     }
 }
