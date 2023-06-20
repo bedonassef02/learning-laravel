@@ -13,11 +13,14 @@ class CountryController extends Controller
      */
     public function index()
     {
-        // store for 40 sec
-        $countries = Cache::remember('users', 40, function () {
-            return Country::take(20000)->get();
+        $array = ['bedo', 'test', null];
+        $collection = collect(['bedo', 'test', null])->map(function ($name) {
+            return strtoupper($name);
+        }
+        )->reject(function ($name) {
+            return empty($name);
         });
-        return view('countries', get_defined_vars());
+        dd(gettype($array));
     }
 
     /**
@@ -25,7 +28,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        Country::factory()->count(10000)->create();
+        Country::factory()->count(100)->create();
     }
 
     /**
