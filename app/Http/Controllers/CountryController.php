@@ -11,7 +11,8 @@ class CountryController extends Controller
 {
     public function index()
     {
-        session()->put('name', 'Bedo');
+        session()->put('name', ['Bedo']);
+        session()->push('name','M');
         $value = session()->get('name');
         return $value;
     }
