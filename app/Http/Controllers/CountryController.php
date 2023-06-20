@@ -10,10 +10,10 @@ use function Sodium\increment;
 
 class CountryController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        session()->flush('counter');
-        return session()->get('counter');
+        // return true or false
+        dd($request->is('countries'));
     }
 
     public function create()
@@ -23,7 +23,6 @@ class CountryController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->path());
     }
 
     public function show(Country $country)
