@@ -12,8 +12,7 @@ class CountryController extends Controller
 {
     public function index(Request $request)
     {
-        dd($request->input('name', 'default'));
-        dd($request->input()->name);
+        dd($request->boolean('hasWifi'));
     }
 
     public function create()
