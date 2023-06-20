@@ -5,16 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 
 class PostController extends Controller
 {
 
     public function index()
     {
-        // call scope in model
-        $posts = Post::bedo()->first();
-        return $posts;
-        return view('posts.index', compact('posts'));
+//        $value = url()->current();
+//        $value = url()->full();
+//        $value = route('posts.index');
+        $value = URL::signedRoute('posts.index');
+
+        return $value;
     }
 
     public function store(Request $request)
