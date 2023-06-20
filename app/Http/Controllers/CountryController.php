@@ -12,7 +12,7 @@ class CountryController extends Controller
 {
     public function index(Request $request)
     {
-        dd($request->header('connection'));
+        dd($request->hasHeader('connection'));
     }
 
     public function create()
