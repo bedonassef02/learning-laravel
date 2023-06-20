@@ -12,8 +12,7 @@ class CountryController extends Controller
 {
     public function index()
     {
-        session()->put('counter', 1);
-        session()->increment('counter');
+        session()->increment('counter',2);
         return session()->get('counter');
     }
 
