@@ -24,7 +24,7 @@ Route::group([
 ], function () {
     Route::get('create', 'PostController@create');
     Route::post('store', 'PostController@store')->name('posts.store');
-    Route::get('/', 'PostController@index')->name('posts.index');
+    Route::get('/', 'PostController@index')->name('posts.index')->middleware('check_user');
     Route::get('{id}/edit', 'PostController@edit')->name('posts.edit');
     Route::put('{id}/update', 'PostController@update')->name('posts.update');
     Route::delete('{id}/delete', 'PostController@destroy')->name('posts.destroy');
