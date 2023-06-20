@@ -6,15 +6,15 @@ use App\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
+use function Sodium\increment;
 
 class CountryController extends Controller
 {
     public function index()
     {
-        // will delete name after returning it
-        // and if name not exsists will return default
-        $value = session()->pull('name', 'default');
-        return $value;
+        session()->put('counter', 1);
+        session()->increment('counter');
+        return session()->get('counter');
     }
 
     public function create()
