@@ -14,12 +14,7 @@ class CountryController extends Controller
     public function index()
     {
         $array = ['bedo', 'test', null];
-        $collection = collect(['bedo', 'test', null])->map(function ($name) {
-            return strtoupper($name);
-        }
-        )->reject(function ($name) {
-            return empty($name);
-        });
+        $collection = collect(['bedo', 'test', null])->map(fn ($name) => strtoupper($name))->reject(fn ($name) => empty($name));
         dd(gettype($array));
     }
 
