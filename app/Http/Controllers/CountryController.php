@@ -11,13 +11,8 @@ class CountryController extends Controller
 {
     public function index()
     {
-        $value = '';
-        // if user == null => exists will return true
-        if (session()->has('user')) {
-            $value = session()->get('user');
-        } else {
-            $value = 'Guest';
-        }
+        session()->put('name', 'Bedo');
+        $value = session()->get('name');
         return $value;
     }
 
