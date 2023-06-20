@@ -13,6 +13,7 @@ class PrintEmail extends Command
 
     public function handle()
     {
-        $this->info('print email command successfully');
+        $email = $this->argument('email');
+        $this->info('print email ' . $email . ' command successfully');
     }
 }
