@@ -11,11 +11,6 @@ class CountryController extends Controller
 {
     public function index()
     {
-        Collection::macro('toUpper', function () {
-            return $this->map(function ($value) {
-                return strtoupper($value);
-            });
-        });
         $collection = collect(['bedo', 'test', null])->toUpper();
         dd($collection->all());
     }
